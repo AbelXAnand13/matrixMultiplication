@@ -30,16 +30,15 @@ int main() {
 //C = │ a10 * b00 + a11 * b10 + a12 * b20     a10 * b01 + a11 * b11 + a12 * b21      a10 * b02 + a11 * b12 + a12 * b22    │
 //    │ a20 * b00 + a21 * b10 + a22 * b20     a20 * b01 + a21 * b11 + a22 * b21      a20 * b02 + a21 * b12 + a22 * b22    │
 //    └                                                                                                                   ┘
-    for (int i = 0; i < a.size(); i++) {
-        vector<int> temp;//temporary vector thats gonna dump into c
-        for (int j = 0; j < a[i].size();j++) {
-            for (int x = 0; x < temp.size(); x++) {
-                temp.push_back(a[i][j]*b[i][j] + a[i][j]*b[i][j] + a[i][j]*b[i][j]);
+    for (int i = 0; i < 3; i++) {
+            vector<int> temp { 0, 0, 0 };//temporary vector to dump into c
+            for (int j = 0; j < 3; j++) {
+                for (int x = 0; x < 3; x++) {
+                    temp[j] += a[i][x] * b[x][j];//adding the products to temp vector
+                }
             }
             c.push_back(temp);
         }
-    }
-    
     for (int i = 0; i < c.size(); i++) {
         for (int j =0; j < c[i].size(); j++) {
             cout << c[i][j] << "\t";
